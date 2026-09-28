@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cargando...</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: #000;
+      font-family: Arial, sans-serif;
+      cursor: pointer;
+    }
+
+    /* Mensaje inicial para forzar la interacción del usuario */
+    #pantallaInicio {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100vh;
+      color: #fff;
+      font-size: 1.2rem;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* Reproductor de video oculto al inicio */
+    #videoBroma {
+      display: none;
+      width: 100%;
+      height: 100vh;
+      object-fit: contain; /* Ajusta el video a la pantalla sin deformarlo */
+      background-color: #000;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Mensaje engañoso -->
+  <div id="pantallaInicio">
+    <p>Haz clic en la pantalla para reproducir el contenido...</p>
+  </div>
+
+  <!-- Video en bucle -->
+  <video id="videoBroma" src="video.mp4" loop playsinline></video>
+
+  <script>
+    document.addEventListener('click', function() {
+      const video = document.getElementById('videoBroma');
+      const inicio = document.getElementById('pantallaInicio');
+
+      // Oculta el mensaje y muestra el video
+      inicio.style.display = 'none';
+      video.style.display = 'block';
+
+      // Reproduce el video con audio activado
+      video.play();
+    }, { once: true }); // Se ejecuta solo al primer clic
+  </script>
+
+</body>
+</html>
